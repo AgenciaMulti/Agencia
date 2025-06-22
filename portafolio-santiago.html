@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portafolio - Santiago Castillo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/santiago.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<body>
+    <!-- Header -->
+  <header id="main-header">
+    <div class="logo">
+      <a href="index.html"><img src="img/banner-santiago.jpg" alt="Castle Agency"></a>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html#hero">Inicio</a></li>
+        <li><a href="index.html#nosotros">Sobre Nosotros</a></li>
+        <li><a href="index.html#equipo">Equipo</a></li>
+        <li><a href="index.html#servicios">Servicios</a></li>
+        <li><a href="index.html#contacto">Contacto</a></li>
+      </ul>
+      <button id="menu-toggle" class="menu-toggle">☰</button>
+    </nav>
+  </header>
+    <section class="banner">
+    <div class="banner-content">
+     <h1>Santiago Castillo</h1>
+     <p>Diseñador UX/UI especializado en experiencias digitales únicas</p>
+    </div>
+    </section>
+
+    <!-- Biografia -->
+    <section class="bio">
+    <div class="bio-container">
+        <div class="bio-img">
+        <img src="img/banner-santiago.jpg" alt="Santiago Castillo">
+        </div>
+        <div class="bio-info">
+        <p><strong>Diseñador UX/UI</strong></p>
+        <p>
+            Soy un diseñador apasionado por crear experiencias digitales intuitivas y memorables.
+            Combino estética con funcionalidad para ofrecer soluciones centradas en el usuario.
+            He trabajado en proyectos para marcas emergentes y empresas consolidadas, siempre con una visión fresca y estratégica.
+        </p>
+        <div class="redes">
+            <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-behance"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-dribbble"></i></a>
+        </div>
+        <a href="docs/cv-santiago.pdf" class="btn-descargar" download>Descargar CV</a>
+        </div>
+    </div>
+    </section>
+
+
+    <!-- Skills -->
+    <section class="skills">
+        <h2 class="titulo-skills">Tecnologías y Herramientas</h2>
+        <p>
+            Selecciona la herramienta para ver proyectos relacionados
+        </p>
+        <ul class="herramientas">
+            <li data-tool="photoshop">Photoshop</li>
+            <li data-tool="illustrator">Illustrator</li>
+            <li data-tool="maya3d">Maya 3D</li>
+        </ul>
+        <div class="tool-details" id="toolDetails">
+            <div id="viewerContainer" class="viewer"></div>
+        </div>
+    </section>
+
+
+    <!-- Trabajos / Proyectos -->
+    <section class="trabajos">
+        <h2 class="trabajo-title">Todos mis Proyectos</h2>
+        <div class="galeria">
+            <div class="proyectos">
+                <div class="pro-imagen" style="background-image: url('img/banner-santiago.jpg');">
+                <div class="pro-overlay">
+                    <h3>Proyecto 1</h3>
+                    <button class="view-btn" data-pdf="docs/2.pdf">Ver Proyecto</button>
+                </div>
+                </div>
+            </div>
+            <div class="proyectos">
+                <div class="pro-imagen" style="background-image: url('img/banner-santiago.jpg');">
+                <div class="pro-overlay">
+                    <h3>Proyecto 1</h3>
+                    <button class="view-btn" data-pdf="docs/2.pdf">Ver Proyecto</button>
+                </div>
+                </div>
+            </div>
+            <div class="proyectos">
+                <div class="pro-imagen" style="background-image: url('img/banner-santiago.jpg');">
+                <div class="pro-overlay">
+                    <h3>Proyecto 1</h3>
+                    <button class="view-btn" data-pdf="docs/2.pdf">Ver Proyecto</button>
+                </div>
+                </div>
+            </div>
+            <div class="proyectos">
+                <div class="pro-imagen" style="background-image: url('img/banner-santiago.jpg');">
+                <div class="pro-overlay">
+                    <h3>Proyecto 1</h3>
+                    <button class="view-btn" data-pdf="docs/2.pdf">Ver Proyecto</button>
+                </div>
+                </div>
+            </div>
+            <div class="proyectos">
+                <div class="pro-imagen" style="background-image: url('img/banner-santiago.jpg');">
+                <div class="pro-overlay">
+                    <h3>Proyecto 1</h3>
+                    <button class="view-btn" data-pdf="docs/2.pdf">Ver Proyecto</button>
+                </div>
+                </div>
+            </div>
+            <div class="proyectos">
+                <div class="pro-imagen" style="background-image: url('img/banner-santiago.jpg');">
+                <div class="pro-overlay">
+                    <h3>Proyecto 1</h3>
+                    <button class="view-btn" data-pdf="docs/2.pdf">Ver Proyecto</button>
+                </div>
+                </div>
+            </div>
+            </div>
+            
+            <!-- Visor PDF -->
+            <div id="pdfViewer" class="pdf-viewer">
+            <div class="viewer-header">
+                <button id="closeViewer" class="close-btn">✕</button>
+            </div>
+            <div class="viewer-content">
+                <iframe id="pdfFrame" src="" frameborder="0"></iframe>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- formulario contacto -->
+    <section id="contacto" class="contacto reveal">
+        <div class="contacto-container">
+        <div class="contacto-info">
+            <h2>Contáctanos</h2>
+            <p>¿Tienes un proyecto en mente o deseas más información? Estamos listos para ayudarte a crear algo increíble.</p>
+            <p><i class="fas fa-envelope"></i> contacto@castleagency.com</p>
+            <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+            <p><i class="fas fa-location-dot"></i> Bogotá, Colombia</p>
+        </div>
+
+        <form id="formFlotante">
+            <input type="text" name="nombre" placeholder="Nombre o Empresa" required>
+            <input type="email" name="email" placeholder="Correo electrónico" required>
+            <textarea name="mensaje" rows="4" placeholder="Mensaje (opcional)" required></textarea>
+            <div id="mensajeFlotante" class="mensaje-estado"></div>
+            <button type="submit">Enviar</button>
+        </form>
+        </div>
+    </section>
+
+    <!-- formulario popup -->
+    <div class="popup-contacto" id="popupFormulario">
+        <div class="popup-contenido">
+        <button class="cerrar-popup" id="cerrarPopup">✕</button>
+        <h3>Conversemos</h3>
+        <form id="formFlotante">
+            <input type="text" name="nombre" placeholder="Nombre o Empresa" required>
+            <input type="email" name="email" placeholder="Correo electrónico" required>
+            <textarea name="mensaje" rows="4" placeholder="Mensaje (opcional)" required></textarea>
+            <div id="mensajeFlotante" class="mensaje-estado"></div>
+            <button type="submit">Enviar</button>
+        </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+        <div class="footer-logo">
+            <img src="img/logo.svg" alt="Castle Agency" width="140" height="auto" />
+        </div>
+        <div class="footer-text">
+            <p>&copy; 2025 Castle Agency. Todos los derechos reservados.</p>
+            <p>Diseño y desarrollo por <strong>Castle Agency</strong></p>
+        </div>
+        <div class="footer-social">
+            <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.behance.net" target="_blank"><i class="fab fa-behance"></i></a>
+            <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+        </div>
+    </footer>
+
+    <!-- Botón flotante -->
+    <div class="boton-flotante" id="abrirPopup">
+        <i class="fas fa-handshake"></i> ¿Trabajamos juntos?
+    </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/santiago.js"></script>
+  <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script> emailjs.init("qBAYR1FbMSBMKO7NS"); </script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800,
+      once: true,
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    emailjs.init("qBAYR1FbMSBMKO7NS");
+
+    const SERVICE_ID = 'service_9xlcpi4';
+    const TEMPLATE_ID = 'template_ir4zlqk';
+
+    function enviarFormularioEmailJS(form, mensajeContenedor, cerrarPopupCallback = null) {
+      const formData = new FormData(form);
+      const tempForm = document.createElement('form');
+      formData.forEach((value, key) => {
+        const input = document.createElement('input');
+        input.name = key;
+        input.value = value;
+        tempForm.appendChild(input);
+      });
+
+      mensajeContenedor.style.display = 'none';
+
+      emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, tempForm)
+        .then(() => {
+          mensajeContenedor.textContent = '¡Mensaje enviado correctamente!';
+          mensajeContenedor.className = 'mensaje-estado exito';
+          mensajeContenedor.style.display = 'block';
+          form.reset();
+          setTimeout(() => {
+            mensajeContenedor.style.display = 'none';
+            if (cerrarPopupCallback) cerrarPopupCallback();
+          }, 3000);
+        })
+        .catch((error) => {
+          mensajeContenedor.textContent = 'Hubo un error al enviar el mensaje. Intenta de nuevo.';
+          mensajeContenedor.className = 'mensaje-estado error';
+          mensajeContenedor.style.display = 'block';
+          console.error('EmailJS error:', error);
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const formFlotante = document.getElementById('formFlotante');
+      if (formFlotante) {
+        formFlotante.addEventListener('submit', function (e) {
+          e.preventDefault();
+          const mensaje = document.getElementById('mensajeFlotante');
+          enviarFormularioEmailJS(this, mensaje, () => {
+            document.getElementById('popupFormulario').style.display = 'none';
+          });
+        });
+      }
+
+      const abrirPopup = document.getElementById("abrirPopup");
+      const cerrarPopup = document.getElementById("cerrarPopup");
+      const popupFormulario = document.getElementById("popupFormulario");
+
+      if (abrirPopup) {
+        abrirPopup.addEventListener("click", () => {
+          popupFormulario.style.display = "flex";
+        });
+      }
+
+      if (cerrarPopup) {
+        cerrarPopup.addEventListener("click", () => {
+          popupFormulario.style.display = "none";
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>
