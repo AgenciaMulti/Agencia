@@ -8,8 +8,14 @@
   --color-texto: #fff;
   --font: 'Inter', sans-serif;
   --transition-speed: 0.3s;
-  --hover-bg: rgba(255, 255, 255, 0.08);
+  --hover-bg: rgba(255, 255, 255, 0.1);
   --submenu-bg: rgba(0, 0, 0, 0.9);
+  --hover-bg: rgba(255, 255, 255, 0.1);
+  --nav-bg: rgba(18, 18, 18, 0.95);
+  --nav-text: #f5f5f7;
+  --nav-hover: #fff;
+   --submenu-bg: #1c1c1e;
+   --radius: 12px;
 }
 
 
@@ -23,7 +29,7 @@
 }
 
 body {
-  font-family: var(--font);
+   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   background: #ffffff;
   color: var(--color-texto);
   line-height: 1.6;
@@ -37,23 +43,24 @@ header {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 100;
+  z-index: 999;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 4vw;
+  padding: 1rem 5vw;
+  background: transparent;
   transition: background var(--transition-speed), backdrop-filter var(--transition-speed), box-shadow 0.3s ease;
 }
 
 header.scrolled {
-  background: var(--blur-bg);
+  background: var(--nav-bg);
   backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
 }
 
 .logo img {
-  height: 32px;
+  height: 36px;
   transition: transform var(--transition-speed);
 }
 
@@ -61,104 +68,140 @@ header.scrolled {
   transform: scale(1.05);
 }
 
-nav ul {
-  display: flex;
-  gap: 2rem;
-  list-style: none;
+nav {
   position: relative;
-  align-items: center;
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
 }
 
-nav a {
-  color: #fff;
+.nav-list {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  align-items: center;
+  margin: 0;
+  transition: all var(--transition-speed);
+}
+
+.nav-list li {
+  position: relative;
+}
+
+.nav-list a {
+  color: var(--nav-text);
   text-decoration: none;
   font-weight: 500;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
+  font-size: 0.95rem;
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius);
   transition: background var(--transition-speed), transform var(--transition-speed);
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
 }
 
-nav a:hover {
+.nav-list a:hover {
   background: var(--hover-bg);
-  transform: translateY(-2px);
+  transform: translateY(-1px);
+  color: var(--nav-hover);
 }
 
-/* Toggle (responsive) */
-nav .menu-toggle {
-  display: none;
-  background: transparent;
+.menu-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  width: 32px;
+  height: 32px;
+  background: none;
   border: none;
-  font-size: 1.8rem;
-  color: #fff;
   cursor: pointer;
+  z-index: 1001;
+  display: none;
 }
 
-/* DROPDOWN MENU */
-/* Corrige la alineación */
-nav ul li {
-  position: relative;
-
+.menu-toggle .bar {
+  width: 100%;
+  height: 3px;
+  background-color: white;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  transform-origin: center;
 }
 
-nav ul li.has-submenu > a::after {
-  content: "▼";
-  font-size: 0.65rem;
-  margin-left: 4px;
-  transition: transform var(--transition-speed);
+/* Animación a X */
+.menu-toggle.open .bar:nth-child(1) {
+  transform: rotate(45deg) translate(7px, 7px);
 }
 
-/* Cuando haces hover al padre, se expande */
-nav ul li.has-submenu:hover ul {
-  max-height: 300px; /* ajusta si tu submenu tiene más o menos ítems */
-  opacity: 1;
-  padding: 0.5rem 0;
+.menu-toggle.open .bar:nth-child(2) {
+  opacity: 0;
+  transform: scale(0);
 }
 
-nav ul li.has-submenu:hover > a::after {
+.menu-toggle.open .bar:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+
+.menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background: #fff;
+  border-radius: 3px;
+}
+
+.has-submenu > a::after {
+  content: " ▼";
+  display: inline-block;
+  font-size: 0.6rem;
+  margin-left: 5px;
+  transition: transform 0.3s ease;
+  transform-origin: center;
+}
+
+/* 🔁 Rotar en hover (escritorio) y en clase .open (móvil) */
+.has-submenu:hover > a::after,
+.has-submenu.open > a::after {
   transform: rotate(180deg);
 }
 
-nav ul li ul {
-  display: block;
-  max-height: 0;
-  overflow: hidden;
-  background: var(--blur-bg);
-  margin-top: 0.5rem;
-  border-radius: 8px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
-  transition: max-height 0.3s ease-in-out, opacity 0.3s ease;
+.submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--submenu-bg);
+  border-radius: var(--radius);
+  min-width: 160px;
+  padding: 0.5rem 0;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
   opacity: 0;
-  padding: 0 0; /* sin padding inicial para que no tome espacio vacío */
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  list-style: none; 
 }
 
-nav ul li:hover ul {
-  display: block;
+.submenu li {
+  list-style: none; 
+}
+
+.has-submenu:hover .submenu {
   opacity: 1;
+  visibility: visible;
   pointer-events: auto;
   transform: translateY(0);
 }
 
-nav ul li ul li {
-  width: 100%;
-}
-
-/* Submenu items */
-nav ul li ul li a {
+.submenu li a {
   display: block;
-  padding: 0.5rem 1rem;
-  color: #fff;
-  text-align: left;
-  white-space: nowrap;
+  color: var(--nav-text);
+  padding: 0.6rem 1.2rem;
   transition: background 0.3s;
 }
 
-nav ul li ul li a:hover {
-  background: var(--hover-bg);
+.submenu li a:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
-
 /* ------------------------------------------------------------------
    🖼️ HERO SECTION
 ------------------------------------------------------------------ */
@@ -711,48 +754,91 @@ footer {
    📐 MEDIA QUERIES
 ------------------------------------------------------------------ */
 @media (max-width: 768px) {
-  nav ul {
-    display: none;
-    flex-direction: column;
-    background: #111;
+  nav {
     position: absolute;
     top: 100%;
-    right: 0;
-    width: 200px;
-    border-radius: 8px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-    padding: 1rem;
+    left: 0;
+    width: 100%;
   }
 
-   nav ul.show {
-    display: flex;
-  }
-  nav ul.open {
-    display: flex;
+  .nav-list {
+    flex-direction: column;
+    background: var(--nav-bg);
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    border-radius: 0 0 var(--radius) var(--radius);
+    opacity: 0;
+    transition: all 0.4s ease;
+    align-items: center; /* Centra todos los items */
+    text-align: center;
   }
 
-  nav ul li ul {
-    position: relative;
-    top: auto;
-    left: auto;
-    transform: none;
-    box-shadow: none;
-    background: transparent;
-    padding: 0;
+  .nav-list.show {
+    max-height: 500px;
     opacity: 1;
-    pointer-events: auto;
+    padding: 1rem 0;
   }
 
-  nav ul li:hover ul {
-    display: block;
+  .menu-toggle {
+    display: flex;
   }
 
-  nav ul li ul li a {
-    padding-left: 1.5rem;
+  .has-submenu {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+.has-submenu.open {
+  gap: 0.6rem;
+}
+.has-submenu .submenu {
+  position: static;
+  transform: scaleY(0.95);
+  transform-origin: top;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  transition: all 0.4s ease;
+  padding: 0.5rem 0;
+  background: var(--nav-bg); /* Puedes definir un fondo aquí */
+  border-radius: var(--radius);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  gap: 0.6rem; /* o el valor que quieras */
+}
+.has-submenu.open .submenu {
+  opacity: 1;
+  max-height: 500px;
+  transform: scaleY(1);
+  visibility: visible;
+}
+  .has-submenu > a::after {
+    content: \" ▼\";
+    display: inline-block;
+    transition: transform 0.3s ease;
   }
 
-  nav .menu-toggle {
-    display: block;
+  .has-submenu.open > a::after {
+    transform: rotate(180deg);
+  }
+
+  .submenu {
+  display: none;
+  opacity: 0;
+  transform: scaleY(0.95);
+  transform-origin: top;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.submenu.open {
+  display: block;
+  opacity: 1;
+  transform: scaleY(1);
+}
+  .submenu li a {
+    text-align: center;
+    padding: 0.5rem 1rem;
   }
 }
 

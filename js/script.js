@@ -1,11 +1,3 @@
-// Scroll suave
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', function(e) {
-    e.preventDefault();
-    document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-  });
-});
-
 // Efecto scroll header
 window.addEventListener('scroll', () => {
   const header = document.getElementById('main-header');
@@ -43,41 +35,92 @@ revealEls.forEach((el, index) => {
   observer.observe(el);
 });
 
-// Sticky header con scroll
-  window.addEventListener('scroll', () => {
-    const header = document.getElementById('main-header');
-    header.classList.toggle('scrolled', window.scrollY > 10);
+// Scroll suave
+for (const link of document.querySelectorAll('a[href^="#"]')) {
+  link.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
   });
+}
 
-  // Menu toggle responsive
-  document.getElementById('menu-toggle').addEventListener('click', () => {
-    const navList = document.querySelector('nav ul');
-    navList.classList.toggle('show');
+// Sticky header
+window.addEventListener('scroll', () => {
+  const header = document.getElementById('main-header');
+  header.classList.toggle('scrolled', window.scrollY > 20);
+});
+
+// Toggle menú móvil funcional
+const toggle = document.getElementById('menu-toggle');
+const navList = document.getElementById('nav-list');
+toggle.addEventListener('click', () => {
+  navList.classList.toggle('show');
+});
+
+document.querySelectorAll('.has-submenu > a').forEach(link => {
+  link.addEventListener('click', (e) => {
+    if (window.innerWidth <= 768) {
+      e.preventDefault();
+      const li = link.parentElement;
+      const submenu = link.nextElementSibling;
+
+      // Toggle estado
+      submenu.classList.toggle('open');
+      li.classList.toggle('open');
+
+      // Opcional: cerrar otros submenús
+      document.querySelectorAll('.has-submenu').forEach(other => {
+        if (other !== li) {
+          other.classList.remove('open');
+          const otherMenu = other.querySelector('.submenu');
+          if (otherMenu) otherMenu.classList.remove('open');
+        }
+      });
+    }
   });
+});
 
-  // GSAP: animación del logo al cargar
+// GSAP animaciones
+if (typeof gsap !== 'undefined') {
   gsap.from(".logo img", {
-    duration: 0.5,
+    duration: 0.6,
     y: -40,
     opacity: 0,
     ease: "power3.out"
   });
 
-  // GSAP: animación de cada ítem del menú principal
-  gsap.from("nav ul li", {
+  gsap.from(".nav-list li", {
     duration: 0.5,
     y: -20,
     opacity: 0,
-    stagger: 0.15,
-    delay: 0.5,
+    stagger: 0.1,
+    delay: 0.3,
     ease: "power2.out"
   });
 
-  // GSAP: animación del botón de menú (modo responsive)
   gsap.from("#menu-toggle", {
-    duration: 0.5,
+    duration: 0.4,
     scale: 0,
     opacity: 0,
     delay: 0.5,
     ease: "back.out(1.7)"
   });
+}
+
+// Cambiar ícono hamburguesa a "X"
+toggle.addEventListener('click', () => {
+  toggle.classList.toggle('open');
+});
+
+// Cerrar al hacer click fuera del menú
+document.addEventListener('click', (e) => {
+  const isClickInside = navList.contains(e.target) || toggle.contains(e.target);
+  if (!isClickInside && navList.classList.contains('show')) {
+    navList.classList.remove('show');
+    toggle.classList.remove('open');
+
+    // Cerrar submenús también
+    document.querySelectorAll('.submenu').forEach(sm => sm.classList.remove('open'));
+    document.querySelectorAll('.has-submenu').forEach(li => li.classList.remove('open'));
+  }
+});
