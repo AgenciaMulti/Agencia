@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mi Agencia Multimedia</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Work+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css"/>
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -46,7 +47,7 @@
     </div>
   </section>
 
-  <!-- Quienes somos -->
+  <!-- Nosotros -->
   <section id="nosotros" class="nosotros">
     <div class="contenido-texto">
       <h2 class="reveal-text">¿Quiénes Somos?</h2>
@@ -133,7 +134,7 @@
   <!-- formulario popup -->
   <div class="popup-contacto" id="popupFormulario">
     <div class="popup-contenido">
-      <button class="cerrar-popup" id="cerrarPopup">✕</button>
+      <button class="cerrar-popup" id="cerrarPopup" aria-label="Cerrar formulario">×</button>
       <h3>Conversemos</h3>
       <form id="formFlotante">
         <input type="text" name="nombre" placeholder="Nombre o Empresa" required>
@@ -153,7 +154,7 @@
       </div>
       <div class="footer-text">
         <p>&copy; 2025 Castle Agency. Todos los derechos reservados.</p>
-        <p>Diseño y desarrollo por <strong>Castle Agency</strong></p>
+        <p>Diseño y desarrollo por <strong>Casti Agency</strong></p>
       </div>
       <div class="footer-social">
         <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
@@ -164,9 +165,9 @@
   </footer>
 
   <!-- Botón flotante -->
-  <div class="boton-flotante" id="abrirPopup">
-    <i class="fas fa-handshake"></i> ¿Trabajamos juntos?
-  </div>
+  <div class="boton-flotante" id="botonContactoFlotante">
+  <i class="fas fa-handshake"></i> ¿Trabajamos juntos?
+</div>
 
   <!-- SCRIPTS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>

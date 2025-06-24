@@ -124,3 +124,38 @@ document.addEventListener('click', (e) => {
     document.querySelectorAll('.has-submenu').forEach(li => li.classList.remove('open'));
   }
 });
+
+const botonFlotante = document.getElementById('botonContactoFlotante');
+const popup = document.getElementById('popupFormulario');
+const cerrarBtn = document.getElementById('cerrarPopup');
+
+if (botonFlotante && popup) {
+  // Mostrar/Ocultar al hacer clic en el botón flotante
+  botonFlotante.addEventListener('click', (e) => {
+    e.stopPropagation(); // evita cierre inmediato si haces clic en botón
+    popup.classList.toggle('visible');
+  });
+
+  // Cerrar al hacer clic en el botón ✕
+  if (cerrarBtn) {
+    cerrarBtn.addEventListener('click', () => {
+      popup.classList.remove('visible');
+    });
+  }
+
+  // Cerrar al hacer clic fuera del popup
+  document.addEventListener('click', (e) => {
+    const isClickInsidePopup = popup.contains(e.target);
+    const isClickOnBoton = botonFlotante.contains(e.target);
+
+    if (!isClickInsidePopup && !isClickOnBoton && popup.classList.contains('visible')) {
+      popup.classList.remove('visible');
+    }
+  });
+
+  // Prevenir que los clics dentro del popup lo cierren
+  popup.addEventListener('click', (e) => {
+    e.stopPropagation();
+  });
+}
+
