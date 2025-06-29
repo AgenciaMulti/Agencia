@@ -59,26 +59,44 @@ toggle.addEventListener('click', () => {
 
 document.querySelectorAll('.has-submenu > a').forEach(link => {
   link.addEventListener('click', (e) => {
-    if (window.innerWidth <= 768) {
-      e.preventDefault();
-      const li = link.parentElement;
-      const submenu = link.nextElementSibling;
+    e.preventDefault();
 
-      // Toggle estado
-      submenu.classList.toggle('open');
-      li.classList.toggle('open');
+    const li = link.parentElement;
+    const submenu = link.nextElementSibling;
 
-      // Opcional: cerrar otros submenús
-      document.querySelectorAll('.has-submenu').forEach(other => {
-        if (other !== li) {
-          other.classList.remove('open');
-          const otherMenu = other.querySelector('.submenu');
-          if (otherMenu) otherMenu.classList.remove('open');
-        }
-      });
-    }
+    // Toggle actual
+    submenu.classList.toggle('open');
+    li.classList.toggle('open');
+
+    // Cerrar otros submenús
+    document.querySelectorAll('.has-submenu').forEach(other => {
+      if (other !== li) {
+        other.classList.remove('open');
+        const otherMenu = other.querySelector('.submenu');
+        if (otherMenu) otherMenu.classList.remove('open');
+      }
+    });
   });
 });
+
+// 🔁 Cerrar submenús y menú hamburguesa al hacer clic fuera
+document.addEventListener('click', (e) => {
+  const nav = document.querySelector('nav');
+  const toggle = document.getElementById('menu-toggle');
+
+  const isClickInsideNav = nav?.contains(e.target) || toggle?.contains(e.target);
+
+  if (!isClickInsideNav) {
+    // Ocultar menú principal si está abierto
+    document.getElementById('nav-list')?.classList.remove('show');
+    toggle?.classList.remove('open');
+
+    // Ocultar submenús
+    document.querySelectorAll('.has-submenu').forEach(li => li.classList.remove('open'));
+    document.querySelectorAll('.submenu').forEach(sm => sm.classList.remove('open'));
+  }
+});
+
 
 // GSAP animaciones
 if (typeof gsap !== 'undefined') {
@@ -105,6 +123,7 @@ if (typeof gsap !== 'undefined') {
     delay: 0.5,
     ease: "back.out(1.7)"
   });
+  
 }
 
 // Cambiar ícono hamburguesa a "X"
@@ -112,18 +131,7 @@ toggle.addEventListener('click', () => {
   toggle.classList.toggle('open');
 });
 
-// Cerrar al hacer click fuera del menú
-document.addEventListener('click', (e) => {
-  const isClickInside = navList.contains(e.target) || toggle.contains(e.target);
-  if (!isClickInside && navList.classList.contains('show')) {
-    navList.classList.remove('show');
-    toggle.classList.remove('open');
 
-    // Cerrar submenús también
-    document.querySelectorAll('.submenu').forEach(sm => sm.classList.remove('open'));
-    document.querySelectorAll('.has-submenu').forEach(li => li.classList.remove('open'));
-  }
-});
 
 const botonFlotante = document.getElementById('botonContactoFlotante');
 const popup = document.getElementById('popupFormulario');

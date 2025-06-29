@@ -10,13 +10,28 @@ body.blur-active::before {
   z-index: 999;
 }
 
-nav .menu-toggle {
-  display: none;
-  background: transparent;
-  border: none;
-  font-size: 1.5rem;
+/* ========================================
+   📢 BANNER
+======================================== */
+.banner {
+  background: linear-gradient(to right, rgba(30, 30, 30, 0.85), rgba(17, 17, 17, 0.85)), url('../img/banner-santiago.jpg') center/cover no-repeat;
   color: #fff;
-  cursor: pointer;
+  padding: 6rem 2rem;
+  text-align: center;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.banner-content h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  animation: slideUp 1s ease-out;
+}
+
+.banner-content p {
+  font-size: 1.2rem;
+  color: #ccc;
+  animation: slideUp 1.2s ease-out;
 }
 
 /* ========================================
@@ -24,10 +39,8 @@ nav .menu-toggle {
 ======================================== */
 .bio-container {
   display: grid;
-  grid-template-columns: 1fr 2fr;
   gap: 1rem;
   align-items: center;
-  max-width: 1200px;
   margin: 2rem 1rem;
   padding: 0 2rem;
 }
@@ -51,7 +64,7 @@ nav .menu-toggle {
   margin-top: 1rem;
 }
 
-.redes a {
+.redes i {
   font-size: 1.5rem;
   margin-right: 1rem;
   color: #000000;
@@ -72,6 +85,10 @@ nav .menu-toggle {
   text-decoration: none;
   font-weight: 500;
   transition: background 0.3s;
+   max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .btn-descargar:hover {
@@ -88,7 +105,7 @@ nav .menu-toggle {
 }
 
 .skills h2 {
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin-bottom: 1.5rem;
   color: white;
 }
@@ -123,84 +140,38 @@ nav .menu-toggle {
   background: #5a5a5a;
 }
 
-/* ========================================
-   🧱 TRABAJOS / PROYECTOS
-======================================== */
-.trabajos {
-  padding: 4rem 2rem;
-  background-color: #fff;
-  text-align: center;
-}
-
-.trabajo-title {
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
+.herramientas li.active-tool {
+  background-color: #ffffff;
   color: #000;
+  font-weight: bold;
+  transition: all 0.3s ease;
 }
 
-.galeria {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-  margin-top: 2rem;
+.herramientas li .flecha {
+  margin-left: 0.2rem;
+  font-size: 1rem;
 }
 
-.galeria img {
-  width: 100%;
-  border-radius: 12px;
-  object-fit: contain;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-}
 
-.galeria p {
-  text-align: center;
-  margin-top: 1rem;
-  font-size: 0.95rem;
-  color: #fffbfb;
-}
-
-.proyectos {
-  width: 300px;
-  height: 200px;
-  position: relative;
+.tool-details {
   overflow: hidden;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: max-height 0.5s ease;
+  max-height: 0;
 }
 
-.pro-imagen {
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  transition: transform 0.3s ease;
-}
-
-.proyectos:hover .pro-imagen {
-  transform: scale(1.05);
-}
-
-.pro-overlay {
+.tag-logo {
   position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.7);
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  padding: 1rem;
-  text-align: center;
+  bottom: 0.7rem;
+  right: 0.7rem;
+  width: 32px;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  opacity: 0.85;
+  filter: brightness(0) saturate(100%) invert(40%) sepia(100%) hue-rotate(200deg);
+  pointer-events: none;
+  z-index: 2;
 }
-
-.proyectos:hover .pro-overlay {
-  opacity: 1;
-}
-
 .tool-proyectos {
   display: flex;
   overflow-x: auto;
@@ -216,9 +187,21 @@ nav .menu-toggle {
 }
 
 .tool-proyectos::-webkit-scrollbar-thumb {
-  background: #00000057;
-  border-radius: 4px;
+    background-color: #888;
+    border-radius: 1rem;
 }
+
+.tool-proyectos.grid-proyectos {
+  display: grid;
+  overflow-x: visible !important;  /* <-- quita el scroll horizontal */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 3rem;
+  background: #ffffff;
+  border-radius: 16px;
+  animation: bubbleIn 0.4s ease-out;
+}
+
 
 .proyecto {
   flex: 0 0 280px;
@@ -236,14 +219,12 @@ nav .menu-toggle {
 
 .proyecto img.miniatura {
   width: 100%;
-  height: 100%;
+  height: auto;
   min-height: 250px;
-  width: 500px;
-  background-size: cover;
-  background-position: center;
-  position: relative;
+  object-fit: cover;
   border-radius: 12px;
 }
+
 
 .overlay {
   position: absolute;
@@ -273,31 +254,71 @@ nav .menu-toggle {
   border-radius: 30px;
   cursor: pointer;
   transition: background 0.3s;
+  font-weight: bold;
 }
 
 .view-btn:hover {
   background: #7e7e7e;
 }
 
+.grid-proyectos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 3rem;
+  background: #ffffff;
+  border-radius: 16px;
+  animation: bubbleIn 0.4s ease-out;
+}
+
+.trabajos h2 {
+    font-size: 2rem;
+    padding-top: 4rem;
+    color: #000;
+}
+
 
 /* ========================================
    📄 VISOR PDF
 ======================================== */
+.viewer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  z-index: 10000;
+  display: none;
+  pointer-events: all; 
+}
+
+.viewer-overlay.active {
+  display: block;
+}
+
+body.overlay-active {
+  overflow: hidden;
+  pointer-events: none;
+}
+
+body.overlay-active .viewer,
+body.overlay-active .viewer-overlay {
+  pointer-events: all;
+}
+
 .viewer {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 95vw;
-  height: 90vh;
+  width: 90vw;
+  max-height: 90vh;
   background: #111;
-  border-radius: 12px;
-  box-shadow: 0 0 60px rgba(155, 145, 145, 0.7);
+  border-radius: 16px;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
   display: none;
   flex-direction: column;
-  padding: 1rem;
-  z-index: 1000;
   overflow: hidden;
+  z-index: 10001;
   animation: fadeIn 0.3s ease;
 }
 
@@ -305,69 +326,43 @@ nav .menu-toggle {
   display: flex;
 }
 
-.viewer iframe {
-  transform-origin: top center;
+.viewer-grid {
+  overflow-y: auto;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.viewer-grid img,
+.viewer-grid iframe,
+.viewer-grid video {
   width: 100%;
-  height: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
   border: none;
 }
 
 .close-viewer {
-  align-self: flex-end;
-  background: #0e0e0e;
-  border: none;
-  color: white;
-  padding: 0.5rem 1rem;
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: #a00;
+  color: #fff;
+  font-size: 0.9rem;
+  padding: 0.4rem 0.8rem;
   border-radius: 50px;
-  font-size: 2rem;
+  z-index: 10002;
   cursor: pointer;
-  transition: background 0.3s;
-  margin-bottom: 0.5rem;
 }
 
 .close-viewer:hover {
-  background: #727272;
+  background: rgb(168, 87, 87);
+  color: #fff;
+
 }
 
-.pdf-viewer {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(10, 10, 10, 0.95);
-  display: none;
-  flex-direction: column;
-  z-index: 9999;
-}
-
-.viewer-header {
-  display: flex;
-  justify-content: flex-end;
-  padding: 10px 20px;
-}
-
-.close-btn {
-  background: #ff4d4d;
-  color: white;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-  padding: 5px 12px;
-  border-radius: 8px;
-}
-
-.viewer-content {
-  flex: 1;
-  padding: 0 20px 20px;
-}
-
-.viewer-content iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-  border-radius: 12px;
-}
 
 /* ========================================
    🌈 ANIMACIONES
@@ -375,6 +370,11 @@ nav .menu-toggle {
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translate(-50%, -40%); }
+  to { opacity: 1; transform: translate(-50%, -50%); }
 }
 
 @keyframes slideUp {
@@ -399,45 +399,443 @@ nav .menu-toggle {
   }
 }
 
-/* ========================================
-   📢 BANNER
-======================================== */
-.banner {
-  background: linear-gradient(to right, rgba(30, 30, 30, 0.85), rgba(17, 17, 17, 0.85)), url('../img/banner-santiago.jpg') center/cover no-repeat;
-  color: #fff;
-  padding: 6rem 2rem;
-  text-align: center;
-  animation: fadeIn 1s ease-in-out;
-}
-
-.banner-content h1 {
-  font-size: 3rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  animation: slideUp 1s ease-out;
-}
-
-.banner-content p {
-  font-size: 1.2rem;
-  color: #ccc;
-  animation: slideUp 1.2s ease-out;
-}
-
 
 /* ========================================
    📱 MEDIA QUERIES
 ======================================== */
-@media (max-width: 768px) {
-  .bio-container {
-    grid-template-columns: 1fr;
+@media (max-width: 720px) {
+  /* ========== BANNER ========== */
+  .banner {
+    padding: 2rem 1rem;
     text-align: center;
   }
 
+  .banner-content h1 {
+    font-size: 2rem;
+    padding-top: 4rem;
+  }
+
+  .banner-content p {
+    font-size: 1rem;
+    padding-bottom: 2rem;
+  }
+
+  /* ========== BIOGRAFÍA ========== */
+  .bio-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 0.2rem 1rem;
+  }
+  /*
   .bio-img img {
+    
+  }
+  */
+
+  .bio-info h2 {
+    font-size: 2rem;
+    padding-top: 4rem;
+    color: #000;
+  }
+  
+  .bio-info p {
+    text-align: justify;
+    font-size: 1rem;
+  }
+
+  .redes {
+    justify-content: center;
+  }
+
+  .redes i {
+    margin-top: 1rem;
+    font-size: 2.2rem;
+  }
+  
+  .btn-descargar {
+    margin-top: 3rem;
+    font-size: 1.5rem;
+    padding: 0.5rem 3rem;
+  }
+  
+  /* ========== SKILLS / TRABAJOS ========== */
+  .skills {
+    padding: 3rem 1.5rem;
+    max-width: 100%;
+  }
+
+  .skills h2 {
+    font-size: 2rem;
+    padding-top: 4rem;
+  }
+
+  .skills p {
+    text-align: center;
+    max-width: 95%;
+    margin: 0 auto 2rem;
+    font-size: 1rem;
+  }
+
+  .herramientas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0 1rem 1rem;
+  }
+
+  .herramientas li {
+    flex: 1 1 auto;
+    max-width: 45%;
+    text-align: center;
+    white-space: nowrap;
+  } 
+  /*
+  .tool-details {
+      
+  }
+
+  .tag-logo {
+      
+  }
+  */
+
+  .tool-proyectos {
+    flex-direction: row;
+    gap: 1rem;
+    padding: 2rem 1rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-padding-left: 1rem; 
+    justify-content: flex-start;
+  }
+
+  .tool-proyectos::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  /*.tool-proyectos::-webkit-scrollbar-thumb {
+   
+  }*/
+
+  .tool-proyectos.grid-proyectos {
+    grid-template-columns: 1fr; 
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .proyecto {
+    flex: 0 0 85%;
+    max-width: 300px;
+    scroll-snap-align: center;
     margin: 0 auto;
   }
 
-  nav .menu-toggle {
-    display: block;
+  /*.proyecto:hover {
+
+  }*/
+
+  .proyecto img.miniatura {
+    border-radius: 16px;
+    object-fit: cover;
+  }
+  
+  .overlay {
+    font-weight:300;
+    font-size: 1rem;
+  }
+  /*
+  .proyecto:hover .overlay {
+      
+  }
+  */
+  .view-btn {
+    font-weight: bold;
+    font-size: 1rem;
+  }
+  
+  /*.grid-proyectos {
+       
+  }*/
+  .trabajos h2 {
+    font-size: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 3rem;
+  }
+
+}
+
+
+@media (min-width: 721px) and (max-width: 1020px) {
+  /* ========== BANNER ========== */
+  .banner {
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+
+  .banner-content h1 {
+    font-size: 3rem;
+    padding-top: 5rem;
+  }
+
+  .banner-content p {
+    font-size: 1.3rem;
+    padding-bottom: 2rem;
+  }
+
+  /* ========== BIOGRAFÍA ========== */
+  .bio-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 0.2rem 1rem;
+  }
+  
+  /*
+  .bio-img img {
+    
+  }
+  */
+  .bio-info h2 {
+    font-size: 2.5rem;
+    padding-top: 3rem;
+    color: #000;
+  }
+  
+  .bio-info p {
+    text-align: justify;
+    font-size: 1.3rem;
+  }
+
+  .redes {
+    justify-content: center;
+  }
+
+  .redes i {
+    margin-top: 1.5rem;
+    font-size: 2.8rem;
+  }
+  
+  .btn-descargar {
+    margin-top: 3rem;
+    font-size: 2rem;
+    padding: 0.5rem 3rem;
+  }
+
+  /* ========== SKILLS / TRABAJOS ========== */
+  .skills {
+    padding: 3rem 1.5rem;
+    max-width: 100%;
+  }
+
+  .skills h2 {
+    font-size: 2.5rem;
+    padding-top: 4rem;
+  }
+
+  .skills p {
+    text-align: center;
+    max-width: 95%;
+    margin: 0 auto 2rem;
+    font-size: 1.3rem;
+  }
+
+  .herramientas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 0 2rem 1.5rem;
+  }
+
+  .herramientas li {
+    padding: 0.5rem 1rem;
+    font-size: 1.3rem;
+  }
+
+  /*
+  .tool-details {
+      
+  }
+
+  .tag-logo {
+      
+  }
+  */
+  
+  .tool-proyectos {
+    padding: 2rem 2rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 2rem;
+  }
+
+  .tool-proyectos.grid-proyectos {
+    display: grid;
+    overflow-x: visible;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    padding: 2rem 1.5rem;
+    gap: 2rem;
+  }
+
+  .proyecto {
+    max-width: 100%;
+  }
+
+  .proyecto img.miniatura {
+    height: auto;
+  }
+  .overlay {
+    font-weight:300;
+    font-size: 1.2rem;
+  }
+  .view-btn {
+    font-weight: bold;
+    font-size: 1.3rem;
+  }
+
+  .trabajos h2 {
+    font-size: 2.5rem;
+    padding-top: 1rem;
+    padding-bottom: 3rem;
+    color: #000;
   }
 }
+
+
+@media (min-width: 1021px) {
+  /* ========== BANNER ========== */
+  .banner {
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+
+  .banner-content h1 {
+    font-size: 3rem;
+    padding-top: 5rem;
+  }
+
+  .banner-content p {
+    font-size: 1rem;
+    padding-bottom: 2rem;
+  }
+
+  /* ========== BIOGRAFÍA ========== */
+  .bio-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-items: center; /* Centra contenido en ambas direcciones */
+    text-align: center;  /* Centra texto dentro de los hijos */
+    gap: 2rem; 
+  }
+
+  /*
+  .bio-img img {
+    
+  }
+  */
+
+  .bio-info h2 {
+    font-size: 2rem;
+    padding-top: 1rem;
+    color: #000;
+  }
+
+  .bio-info p {
+    text-align: justify;
+    font-size: 1rem;
+  }
+  
+  .redes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .redes i {
+    margin-top: 1.5rem;
+    font-size: 2rem;
+  }
+  
+  .btn-descargar {
+    display: block;
+    margin: 2rem auto 0 auto; 
+    font-size: 1.2rem;
+    padding: 0.5rem 3rem;
+    text-align: center;
+  }
+
+  /* ========== SKILLS / TRABAJOS ========== */
+  .skills {
+    padding: 3rem 1.5rem;
+    max-width: 100%;
+  }
+
+  .skills h2 {
+    font-size: 2rem;
+    padding-top: 4rem;
+  }
+
+  .skills p {
+    text-align: center;
+    max-width: 95%;
+    margin: 0 auto 2rem;
+    font-size: 1.rem;
+  }
+
+  .herramientas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 0 3rem 2rem;
+  }
+
+  .herramientas li {
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+  }
+
+  .tool-proyectos {
+    padding: 2rem 2rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 2rem;
+  }
+
+  .tool-proyectos.grid-proyectos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    justify-content: center;  /* ⬅️ Esto alinea los elementos al centro */
+    padding: 3rem;
+    gap: 2rem;
+  }
+
+  .proyecto {
+    max-width: 400px;
+  }
+
+  .proyecto img.miniatura {
+    height: auto;
+  }
+  .overlay {
+    font-weight:300;
+    font-size: 1rem;
+  }
+  .view-btn {
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+
+  .trabajos h2 {
+    font-size: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 3rem;
+    color: #000;
+  }
+}
+

@@ -4,28 +4,42 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portafolio - Santiago Castillo</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/santiago.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Work+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/santiago.css"/>
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-    <!-- Header -->
-  <header id="main-header">
-    <div class="logo">
-      <a href="index.html"><img src="img/banner-santiago.jpg" alt="Castle Agency"></a>
-    </div>
-    <nav>
-      <ul>
-        <li><a href="index.html#hero">Inicio</a></li>
-        <li><a href="index.html#nosotros">Sobre Nosotros</a></li>
-        <li><a href="index.html#equipo">Equipo</a></li>
-        <li><a href="index.html#servicios">Servicios</a></li>
-        <li><a href="index.html#contacto">Contacto</a></li>
-      </ul>
-      <button id="menu-toggle" class="menu-toggle">☰</button>
-    </nav>
-  </header>
+   <!-- Header -->
+    <header id="main-header">
+      <div class="logo">
+        <a href="index.html"><img src="img/banner-santiago.jpg" alt="Castle Agency"></a>
+      </div>
+      <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+      <nav>
+        <ul class="nav-list" id="nav-list">
+          <li><a href="index.html#hero">Inicio</a></li>
+          <li><a href="index.html#nosotros">Sobre Nosotros</a></li>
+          <li class="has-submenu">
+            <a>Equipo</a>
+            <ul class="submenu">
+              <li><a href="portafolio-santiago.html">Santiago</a></li>
+            </ul>
+          </li>
+          <li><a href="index.html#servicios">Servicios</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </header>
+
+
+
     <section class="banner">
     <div class="banner-content">
      <h1>Santiago Castillo</h1>
@@ -59,144 +73,92 @@
 
     <!-- Skills -->
     <section class="skills">
-        <h2 class="titulo-skills">Tecnologías y Herramientas</h2>
+        <h2>Tecnologías y Herramientas</h2>
         <p>
             Selecciona la herramienta para ver proyectos relacionados
         </p>
         <ul class="herramientas">
-            <li data-tool="photoshop">Photoshop</li>
-            <li data-tool="illustrator">Illustrator</li>
-            <li data-tool="maya3d">Maya 3D</li>
+            <li data-tool="photoshop" data-label="Photoshop">Photoshop</li>
+            <li data-tool="illustrator" data-label="Illustrator">Illustrator</li>
+            <li data-tool="maya3d" data-label="Maya 3D">Maya 3D</li>
+            
         </ul>
         <div class="tool-details" id="toolDetails">
-            <div id="viewerContainer" class="viewer"></div>
+            <!-- Los proyectos se cargan aquí dinámicamente -->
         </div>
     </section>
 
+    <div id="viewerOverlay" class="viewer-overlay"></div>
+    <div id="viewerContainer" class="viewer"></div>
 
     <!-- Trabajos / Proyectos -->
     <section class="trabajos">
-        <h2 class="trabajo-title">Todos mis Proyectos</h2>
-        <div class="galeria">
-            <div class="proyectos">
-                <div class="pro-imagen" style="background-image: url('img/banner-santiago.jpg');">
-                <div class="pro-overlay">
-                    <h3>Proyecto 1</h3>
-                    <button class="view-btn" data-pdf="docs/2.pdf">Ver Proyecto</button>
-                </div>
-                </div>
-            </div>
-            <div class="proyectos">
-                <div class="pro-imagen" style="background-image: url('img/banner-santiago.jpg');">
-                <div class="pro-overlay">
-                    <h3>Proyecto 1</h3>
-                    <button class="view-btn" data-pdf="docs/2.pdf">Ver Proyecto</button>
-                </div>
-                </div>
-            </div>
-            <div class="proyectos">
-                <div class="pro-imagen" style="background-image: url('img/banner-santiago.jpg');">
-                <div class="pro-overlay">
-                    <h3>Proyecto 1</h3>
-                    <button class="view-btn" data-pdf="docs/2.pdf">Ver Proyecto</button>
-                </div>
-                </div>
-            </div>
-            <div class="proyectos">
-                <div class="pro-imagen" style="background-image: url('img/banner-santiago.jpg');">
-                <div class="pro-overlay">
-                    <h3>Proyecto 1</h3>
-                    <button class="view-btn" data-pdf="docs/2.pdf">Ver Proyecto</button>
-                </div>
-                </div>
-            </div>
-            <div class="proyectos">
-                <div class="pro-imagen" style="background-image: url('img/banner-santiago.jpg');">
-                <div class="pro-overlay">
-                    <h3>Proyecto 1</h3>
-                    <button class="view-btn" data-pdf="docs/2.pdf">Ver Proyecto</button>
-                </div>
-                </div>
-            </div>
-            <div class="proyectos">
-                <div class="pro-imagen" style="background-image: url('img/banner-santiago.jpg');">
-                <div class="pro-overlay">
-                    <h3>Proyecto 1</h3>
-                    <button class="view-btn" data-pdf="docs/2.pdf">Ver Proyecto</button>
-                </div>
-                </div>
-            </div>
-            </div>
-            
-            <!-- Visor PDF -->
-            <div id="pdfViewer" class="pdf-viewer">
-            <div class="viewer-header">
-                <button id="closeViewer" class="close-btn">✕</button>
-            </div>
-            <div class="viewer-content">
-                <iframe id="pdfFrame" src="" frameborder="0"></iframe>
-            </div>
-        </div>
+        <h2>Mis Proyectos</h2>
 
+        <div id="todosProyectos" class="tool-proyectos grid-proyectos">
+        <!-- Los proyectos se cargan aquí dinámicamente -->
+       </div>
     </section>
+
+
 
     <!-- formulario contacto -->
     <section id="contacto" class="contacto reveal">
-        <div class="contacto-container">
+      <div class="contacto-container">
         <div class="contacto-info">
-            <h2>Contáctanos</h2>
-            <p>¿Tienes un proyecto en mente o deseas más información? Estamos listos para ayudarte a crear algo increíble.</p>
-            <p><i class="fas fa-envelope"></i> contacto@castleagency.com</p>
-            <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
-            <p><i class="fas fa-location-dot"></i> Bogotá, Colombia</p>
+          <h2>Contáctanos</h2>
+          <p>¿Tienes un proyecto en mente o deseas más información? Estamos listos para ayudarte a crear algo increíble.</p>
+          <p><i class="fas fa-envelope"></i> contacto@castleagency.com</p>
+          <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+          <p><i class="fas fa-location-dot"></i> Bogotá, Colombia</p>
         </div>
 
         <form id="formFlotante">
-            <input type="text" name="nombre" placeholder="Nombre o Empresa" required>
-            <input type="email" name="email" placeholder="Correo electrónico" required>
-            <textarea name="mensaje" rows="4" placeholder="Mensaje (opcional)" required></textarea>
-            <div id="mensajeFlotante" class="mensaje-estado"></div>
-            <button type="submit">Enviar</button>
+          <input type="text" name="nombre" placeholder="Nombre o Empresa" required>
+          <input type="email" name="email" placeholder="Correo electrónico" required>
+          <textarea name="mensaje" rows="4" placeholder="Mensaje (opcional)" required></textarea>
+          <div id="mensajeFlotante" class="mensaje-estado"></div>
+          <button type="submit">Enviar</button>
         </form>
-        </div>
+      </div>
     </section>
 
     <!-- formulario popup -->
     <div class="popup-contacto" id="popupFormulario">
-        <div class="popup-contenido">
-        <button class="cerrar-popup" id="cerrarPopup">✕</button>
+      <div class="popup-contenido">
+        <button class="cerrar-popup" id="cerrarPopup" aria-label="Cerrar formulario">×</button>
         <h3>Conversemos</h3>
         <form id="formFlotante">
-            <input type="text" name="nombre" placeholder="Nombre o Empresa" required>
-            <input type="email" name="email" placeholder="Correo electrónico" required>
-            <textarea name="mensaje" rows="4" placeholder="Mensaje (opcional)" required></textarea>
-            <div id="mensajeFlotante" class="mensaje-estado"></div>
-            <button type="submit">Enviar</button>
+          <input type="text" name="nombre" placeholder="Nombre o Empresa" required>
+          <input type="email" name="email" placeholder="Correo electrónico" required>
+          <textarea name="mensaje" rows="4" placeholder="Mensaje (opcional)" required></textarea>
+          <div id="mensajeFlotante" class="mensaje-estado"></div>
+          <button type="submit">Enviar</button>
         </form>
-        </div>
+      </div>
     </div>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-container">
+      <div class="footer-container">
         <div class="footer-logo">
-            <img src="img/logo.svg" alt="Castle Agency" width="140" height="auto" />
+          <img src="img/banner-santiago.jpg" alt="Castle Agency" width="140" height="auto" />
         </div>
         <div class="footer-text">
-            <p>&copy; 2025 Castle Agency. Todos los derechos reservados.</p>
-            <p>Diseño y desarrollo por <strong>Castle Agency</strong></p>
+          <p>&copy; 2025 Castle Agency. Todos los derechos reservados.</p>
+          <p>Diseño y desarrollo por <strong>Casti Agency</strong></p>
         </div>
         <div class="footer-social">
-            <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://www.behance.net" target="_blank"><i class="fab fa-behance"></i></a>
-            <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://www.behance.net" target="_blank"><i class="fab fa-behance"></i></a>
+          <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
         </div>
-        </div>
+      </div>
     </footer>
 
     <!-- Botón flotante -->
-    <div class="boton-flotante" id="abrirPopup">
-        <i class="fas fa-handshake"></i> ¿Trabajamos juntos?
+    <div class="boton-flotante" id="botonContactoFlotante">
+    <i class="fas fa-handshake"></i> ¿Trabajamos juntos?
     </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
