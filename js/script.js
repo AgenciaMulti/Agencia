@@ -165,5 +165,17 @@ if (botonFlotante && popup) {
   popup.addEventListener('click', (e) => {
     e.stopPropagation();
   });
+  // Manejador para el formulario del popup
+  const formPopup = document.getElementById('formPopup');
+  if (formPopup) {
+    formPopup.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const mensaje = document.getElementById('mensajePopup');
+      enviarFormularioEmailJS(this, mensaje, () => {
+        document.getElementById('popupFormulario').classList.remove('visible');
+      });
+    });
+  }
+
 }
 
