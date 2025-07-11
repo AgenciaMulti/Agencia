@@ -25,6 +25,20 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 
 
+const equipoSection = document.querySelector('.equipo');
+
+const observerZoom = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      equipoSection.classList.add('zoom-bg');
+    } else {
+      equipoSection.classList.remove('zoom-bg');
+    }
+  });
+}, { threshold: 0.4 }); // Ajusta visibilidad mínima para activarlo
+
+if (equipoSection) observerZoom.observe(equipoSection);
+
 document.querySelectorAll('section, .grid-portafolio img').forEach(el => {
   observer.observe(el);
 });
@@ -123,7 +137,24 @@ if (typeof gsap !== 'undefined') {
     delay: 0.5,
     ease: "back.out(1.7)"
   });
-  
+  if (typeof gsap !== 'undefined') {
+  gsap.to(".logo-voktag", {
+    opacity: 1,
+    scale: 1.2,
+    duration: 1.2,
+    ease: "power3.out",
+    delay: 0.5
+  });
+  if (typeof gsap !== 'undefined') {
+  gsap.from(".hero-text", {
+    opacity: 0,
+    y: 40,
+    duration: 1.2,
+    ease: "power3.out",
+    delay: 0.8
+  });
+}
+}
 }
 
 // Cambiar ícono hamburguesa a "X"

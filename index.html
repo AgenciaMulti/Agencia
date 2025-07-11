@@ -9,171 +9,185 @@
   <link rel="stylesheet" href="css/style.css"/>
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.cdnfonts.com/css/glacial-indifference" rel="stylesheet">
 </head>
 <body>
 
   <!-- Header -->
-  <header id="main-header">
+<header id="main-header">
   <div class="logo">
-    <a href="index.html"><img src="img/banner-santiago.jpg" alt="Castle Agency"></a>
+    <a href="index.html"><img src="img/logobh.png" alt="Castle Agency"></a>
   </div>
   <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu">
-  <span class="bar"></span>
-  <span class="bar"></span>
-  <span class="bar"></span>
-</button>
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </button>
+  
   <nav>
     <ul class="nav-list" id="nav-list">
-      <li><a href="#hero">Inicio</a></li>
-      <li><a href="#nosotros">Sobre Nosotros</a></li>
+      <li><a href="#hero" data-i18n="inicio">Inicio</a></li>
+      <li><a href="#nosotros" data-i18n="nosotros">Sobre Nosotros</a></li>
       <li class="has-submenu">
-        <a>Equipo</a>
+        <a href="#equipo"data-i18n="equipo">Equipo</a>
         <ul class="submenu">
           <li><a href="portafolio-santiago.html">Santiago</a></li>
         </ul>
       </li>
-      <li><a href="#servicios">Servicios</a></li>
-      <li><a href="#contacto">Contacto</a></li>
+      <li><a href="#servicios" data-i18n="servicios">Servicios</a></li>
+      <li><a href="#contacto" data-i18n="contacto">Contacto</a></li>
     </ul>
   </nav>
+
+
 </header>
 
-  <!-- Inicio / Hero -->
-  <section id="hero" class="hero">
-    <div class="contenido">
-      <h1 class="reveal-text">CASTI AG</h1>
-      <h3 class="reveal-text">Fusionamos arte, tecnología y autenticidad para ofrecer soluciones visuales frescas y profesionales</h3>
-      
-    </div>
-  </section>
+<!-- Inicio / Hero -->
+<section id="hero" class="hero">
+  <img src="videos/bghero.gif" alt="Fondo animado" class="gif-fondo" />
+  <div class="contenido">
+    <h1 class="reveal-text">
+      <img src="img/logoch.png" alt="VOKTAG Logo" class="logo-voktag" />
+    </h1>
+    <h3 class="hero-text" data-i18n="heroTexto">
+      UNA MARCA SIN HISTORIA, ES SOLO UN NOMBRE
+    </h3>
+  </div>
+</section>
 
-  <!-- Nosotros -->
-  <section id="nosotros" class="nosotros">
-    <div class="contenido-texto">
-      <h2 class="reveal-text">¿Quiénes Somos?</h2>
-      <p class="reveal-text">
-        En nuestra agencia multimedia fusionamos creatividad, tecnología y estrategia para crear soluciones visuales que conectan con las audiencias modernas. Nos especializamos en diseño, fotografía, branding y experiencias digitales que elevan el valor de las marcas.<br><br>
-        Cada proyecto es una oportunidad para innovar, emocionar y construir algo auténtico. Trabajamos con pasión, cuidando cada detalle, desde la estética hasta el impacto comunicacional.
-      </p>
-      <div class="valores reveal-text">
-        <div class="valor"><i class="fas fa-lightbulb"></i> Creatividad</div>
-        <div class="valor"><i class="fas fa-rocket"></i> Innovación</div>
-        <div class="valor"><i class="fas fa-star"></i> Calidad</div>
-      </div>
-    </div>
-    <div class="imagen">
-      <img src="img/banner-santiago.jpg" alt="Nuestro equipo" class="reveal">
-    </div>
-  </section>
-
-  <!-- equipo -->
-  <section id="equipo" class="equipo">
-    <h2 class="reveal-text">Nuestro Equipo</h2>
-      <div class="equipo-profesional">
-        <a href="portafolio-santiago.html" class="profesional">
-          <div class="foto-container">
-            <img src="img/banner-santiago.jpg" alt="Santiago Castillo">
-          </div>
-          <div class="info-profesional">
-            <h3>Santiago Castillo</h3>
-            <p>Modelado 3D, Branding, Marketing y Social Media</p>
-          </div>
-        </a>
-        <!-- aqui se añaden más integrantes -->
-      </div>
-  </section>
-
-  <!-- servicios -->
-  <section id="servicios" class="servicios">
-    <h2 class="reveal-text">Servicios</h2>
-    <div class="grid-servicios">
-      <div class="servicio" data-aos="fade-up">
-        <img src="img/banner-santiago.jpg" alt="Foto">
-        <div class="contenido">
-          <p>Captura de productos, eventos y retratos con estilo.</p>
-        </div>
-      </div>
-      <div class="servicio" data-aos="fade-up" data-aos-delay="100">
-        <img src="img/banner-santiago.jpg" alt="Foto">
-        <div class="contenido">
-          <p>Captura de productos, eventos y retratos con estilo.</p>
-        </div>
-      </div>
-      <div class="servicio" data-aos="fade-up" data-aos-delay="200">
-        <img src="img/banner-santiago.jpg" alt="Foto">
-        <div class="contenido">
-          <p>Captura de productos, eventos y retratos con estilo.</p>
-        </div>
-      </div>
-      <div class="servicio" data-aos="fade-up" data-aos-delay="300">
-        <img src="img/banner-santiago.jpg" alt="Foto">
-        <div class="contenido">
-          <p>Captura de productos, eventos y retratos con estilo.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- formulario contacto -->
-  <section id="contacto" class="contacto reveal">
-    <div class="contacto-container">
-      <div class="contacto-info">
-        <h2>Contáctanos</h2>
-        <p>¿Tienes un proyecto en mente o deseas más información? Estamos listos para ayudarte a crear algo increíble.</p>
-        <p><i class="fas fa-envelope"></i> contacto@castleagency.com</p>
-        <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
-        <p><i class="fas fa-location-dot"></i> Bogotá, Colombia</p>
-      </div>
-
-      <form id="formFlotante">
-        <input type="text" name="nombre" placeholder="Nombre o Empresa" required>
-        <input type="email" name="email" placeholder="Correo electrónico" required>
-        <textarea name="mensaje" rows="4" placeholder="Mensaje (opcional)" required></textarea>
-        <div id="mensajeFlotante" class="mensaje-estado"></div>
-        <button type="submit">Enviar</button>
-      </form>
-    </div>
-  </section>
-
-  
-  <!-- formulario popup -->
-  <div class="popup-contacto" id="popupFormulario">
-    <div class="popup-contenido">
-      <button class="cerrar-popup" id="cerrarPopup" aria-label="Cerrar formulario">×</button>
-      <h3>Conversemos</h3>
-      <form id="formPopup"> <!-- CAMBIO AQUÍ -->
-        <input type="text" name="nombre" placeholder="Nombre o Empresa" required>
-        <input type="email" name="email" placeholder="Correo electrónico" required>
-        <textarea name="mensaje" rows="4" placeholder="Mensaje (opcional)" required></textarea>
-        <div id="mensajePopup" class="mensaje-estado"></div> <!-- CAMBIO AQUÍ -->
-        <button type="submit">Enviar</button>
-      </form>
+<!-- Nosotros -->
+<section id="nosotros" class="nosotros">
+  <div class="contenido-texto">
+    <h2 class="reveal-text" data-i18n="quienes">¿QUIENES SOMOS?</h2>
+    <p class="reveal-text" data-i18n="nosotrosTexto">
+      En nuestra agencia multimedia fusionamos creatividad, tecnología y estrategia para crear soluciones visuales que conectan con las audiencias modernas. Nos especializamos en diseño, fotografía, branding y experiencias digitales que elevan el valor de las marcas.<br><br>
+      Cada proyecto es una oportunidad para innovar, emocionar y construir algo auténtico. Trabajamos con pasión, cuidando cada detalle, desde la estética hasta el impacto comunicacional.
+    </p>
+    <div class="valores reveal-text">
+      <div class="valor"><i class="fas fa-lightbulb"></i> <span data-i18n="creatividad">Creatividad</span></div>
+      <div class="valor"><i class="fas fa-rocket"></i> <span data-i18n="innovacion">Innovación</span></div>
+      <div class="valor"><i class="fas fa-star"></i> <span data-i18n="calidad">Calidad</span></div>
     </div>
   </div>
+  <div class="imagen">
+    <img src="img/creatividad.png" alt="Nuestro equipo" class="reveal">
+  </div>
+</section>
 
+<!-- equipo -->
+<section id="equipo" class="equipo">
+  <h2 class="reveal-text" data-i18n="equipoTitulo">NUESTRO EQUIPO</h2>
+  <div class="equipo-carrusel">
+  <div class="carrusel-track">
+    <a href="portafolio-santiago.html" class="profesional">
+      <div class="foto-container">
+        <img src="img/santi.jpg" alt="Santiago Castillo">
+      </div>
+      <div class="info-profesional">
+        <h3>Santiago Castillo</h3>
+        <p data-i18n="profesion">Modelado 3D, Branding, Marketing y Social Media</p>
+      </div>
+    </a>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-logo">
-        <img src="img/banner-santiago.jpg" alt="Castle Agency" width="140" height="auto" />
-      </div>
-      <div class="footer-text">
-        <p>&copy; 2025 Castle Agency. Todos los derechos reservados.</p>
-        <p>Diseño y desarrollo por <strong>Casti Agency</strong></p>
-      </div>
-      <div class="footer-social">
-        <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://www.behance.net" target="_blank"><i class="fab fa-behance"></i></a>
-        <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+    
+
+    <!-- Añade más <a class="profesional"> si deseas -->
+  </div>
+</div>
+
+</section>
+
+<!-- servicios -->
+<section id="servicios" class="servicios">
+  <h2 class="reveal-text" data-i18n="servicios">SERVICIOS</h2>
+  <div class="grid-servicios">
+    <div class="servicio" data-aos="fade-up">
+      <img src="img/banner-santiago.jpg" alt="Foto">
+      <div class="contenido">
+        <p data-i18n="servicioTexto">Captura de productos, eventos y retratos con estilo.</p>
       </div>
     </div>
-  </footer>
+    <div class="servicio" data-aos="fade-up" data-aos-delay="100">
+      <img src="img/banner-santiago.jpg" alt="Foto">
+      <div class="contenido">
+        <p data-i18n="servicioTexto">Captura de productos, eventos y retratos con estilo.</p>
+      </div>
+    </div>
+    <div class="servicio" data-aos="fade-up" data-aos-delay="200">
+      <img src="img/banner-santiago.jpg" alt="Foto">
+      <div class="contenido">
+        <p data-i18n="servicioTexto">Captura de productos, eventos y retratos con estilo.</p>
+      </div>
+    </div>
+    <div class="servicio" data-aos="fade-up" data-aos-delay="300">
+      <img src="img/banner-santiago.jpg" alt="Foto">
+      <div class="contenido">
+        <p data-i18n="servicioTexto">Captura de productos, eventos y retratos con estilo.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <!-- Botón flotante -->
-  <div class="boton-flotante" id="botonContactoFlotante">
-  <i class="fas fa-handshake"></i> ¿Trabajamos juntos?
+<!-- formulario contacto -->
+<section id="contacto" class="contacto reveal">
+  <div class="contacto-container">
+    <div class="contacto-info">
+      <h2 data-i18n="contacto">CONTACTANOS</h2>
+      <p data-i18n="contactoDescripcion">¿Tienes un proyecto en mente o deseas más información? Estamos listos para ayudarte a crear algo increíble.</p>
+      <p><i class="fas fa-envelope"></i> contactovoktag@gmail.com</p>
+      <p><i class="fas fa-phone"></i> +57 3167970360</p>
+      <p><i class="fas fa-location-dot"></i> Bogotá, Colombia</p>
+    </div>
+
+    <form id="formFlotante">
+      <input type="text" name="nombre" data-i18n="nombre" placeholder="Nombre o Empresa" required>
+      <input type="email" name="email" data-i18n="correo" placeholder="Correo electrónico" required>
+      <textarea name="mensaje" rows="4" data-i18n="mensaje" placeholder="Mensaje (opcional)" required></textarea>
+      <div id="mensajeFlotante" class="mensaje-estado"></div>
+      <button type="submit" data-i18n="enviar">Enviar</button>
+    </form>
+  </div>
+</section>
+
+<!-- formulario popup -->
+<div class="popup-contacto" id="popupFormulario">
+  <div class="popup-contenido">
+    <button class="cerrar-popup" id="cerrarPopup" aria-label="Cerrar formulario">×</button>
+    <h3 data-i18n="conversamos">CONVERSEMOS</h3>
+    <form id="formPopup">
+      <input type="text" name="nombre" data-i18n="nombre" placeholder="Nombre o Empresa" required>
+      <input type="email" name="email" data-i18n="correo" placeholder="Correo electrónico" required>
+      <textarea name="mensaje" rows="4" data-i18n="mensaje" placeholder="Mensaje (opcional)" required></textarea>
+      <div id="mensajePopup" class="mensaje-estado"></div>
+      <button type="submit" data-i18n="enviar">Enviar</button>
+    </form>
+  </div>
 </div>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-logo">
+      <img src="img/logobv.png" alt="Castle Agency" width="140" height="auto" />
+    </div>
+    <div class="footer-text">
+      <p data-i18n="footerTexto">&copy; 2025 VOKTAG. Todos los derechos reservados.</p>
+      <p data-i18n="footerCreditos">Diseño y desarrollo por <strong>Santiago Castillo</strong></p>
+    </div>
+    <div class="footer-social">
+      <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://www.behance.net" target="_blank"><i class="fab fa-behance"></i></a>
+      <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+  </div>
+</footer>
+
+<!-- Botón flotante -->
+<div class="boton-flotante" id="botonContactoFlotante">
+  <i class="fas fa-handshake"></i> <span data-i18n="botonFlotante">¿Trabajamos juntos?</span>
+</div>
+
+
 
   <!-- SCRIPTS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -254,6 +268,8 @@
       }
     });
   </script>
+
+  
 
 </body>
 </html>
